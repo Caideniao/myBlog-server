@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "@types/koa-static": "^4.0.0",
+    "koa": "^2.5.2",
     "koa-router": "^7.4.0",
     "koa-static": "^5.0.0"
   }
