@@ -6,8 +6,9 @@ const portfolio = require('./portfolio.js')
 
 const router = new route()
 
-router.get('/test', async (ctx, next) => {
-    ctx.body = 'rrrr'
-})
+router.use('/', home.routes())
+router.use('/about', about.routes())
+router.use('/archive', archive.routes())
+router.use('/portfolio', portfolio.routes())
 
 module.exports = router
