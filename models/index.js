@@ -1,6 +1,6 @@
 const article = require('./lib/sequelize').article
 
-const getArticle = async (page = 1) => {
+const getArticleList = async (page = 1) => {
   try {
     let res = await article.findAll({
         limit: 10,
@@ -33,7 +33,22 @@ const addArticle = async (title, author, introduction) => {
     }
 }
 
+const getArticle = async (id) => {
+    try {
+        let res = article.findOne({
+            where: {
+                article_id: id
+            }
+        })
+        console.log(res)
+        return res
+    } catch (error) {
+        throw error
+    }
+}
+
 module.exports = {
-    getArticle,
-    addArticle
+    getArticleList,
+    addArticle,
+    getArticle
 }

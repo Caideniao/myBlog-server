@@ -21,6 +21,10 @@ const article = sequelize.define('article_info', {
     introduction: {
         type: Sequelize.STRING
     },
+    article_id: Sequelize.INTEGER,
+    content: Sequelize.TEXT,
+    visitor_total: Sequelize.INTEGER,
+    created_at: Sequelize.DATE
 }, {
     freezeTableName: true,
 })
