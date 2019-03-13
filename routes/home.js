@@ -17,6 +17,7 @@ router.get('article/:date', async (ctx, next) => {
     try {
         const id = ctx.query.id
         let res = await article.getArticle(id)
+        ctx.set('Access-Control-Allow-Origin','*')
         ctx.body = res
     } catch (error) {
         ctx.body = `erro:${error}`
