@@ -6,6 +6,6 @@ CREATE TABLE article_info
     introduction    char(200)   NOT NULL,
     created_at      date        NOT NULL,
     visitor_total   int         NOT NULL,
-    content         text
+    content         text        
     PRIMARY KEY (article_id)
 ) ENGINE=InnoDB;
