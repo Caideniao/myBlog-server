@@ -5,28 +5,25 @@ const getArticleList = async (page = 1) => {
     let res = await article.findAll({
         limit: 10,
         offset: page - 1,
-        attributes: ['author', 'introduction', 'title']
+        attributes: ['author', 'introduction', 'title', 'article_id', 'created_at']
     })
     let result = []
     for (const item of res) {
         result.push(item.dataValues)
     }
-    console.log(result)
     return result
   } catch (error) {
     throw error  
   }
 }
 
-const addArticle = async (title, author, introduction) => {
+const addArticle = async (art) => {
     try {
-        let res = article.create({
-            title,
-            author,
-            introduction,
-            create_at: Date.now()
+        let res = await article.create({
+            ...art,
+            created_at: Date.now(),
+            visitor_total: 0
         })
-        console.log(res)
         return res
     } catch (error) {
         throw error
@@ -35,13 +32,12 @@ const addArticle = async (title, author, introduction) => {
 
 const getArticle = async (id) => {
     try {
-        let res = article.findOne({
+        let res = await article.findOne({
             where: {
-                article_id: id
+                title: id
             }
         })
-        console.log(res)
-        return res
+        return res.dataValues
     } catch (error) {
         throw error
     }

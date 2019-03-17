@@ -21,12 +21,17 @@ const article = sequelize.define('article_info', {
     introduction: {
         type: Sequelize.STRING
     },
-    article_id: Sequelize.INTEGER,
+    article_id: {
+        type: Sequelize.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+    },
     content: Sequelize.TEXT,
     visitor_total: Sequelize.INTEGER,
     created_at: Sequelize.DATE
 }, {
     freezeTableName: true,
+    timestamps: false
 })
 
 module.exports = {
